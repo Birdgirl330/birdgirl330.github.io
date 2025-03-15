@@ -51,16 +51,17 @@
         border-collapse: collapse;
       }
       #countries th, #countries td {
-      border: 1px solid  #ffd8fo
+        border: 1px solid #ffd8f0; /* Fixed the color */
         padding: 8px;
       }
       #countries th {
-        font: black bold typewriter;
+        font-weight: bold; /* Fixed font style */
+        font-family: typewriter;
         background-color: #fffad8;
         padding-top: 12px;
         padding-bottom: 12px;
         text-align: left;
-        color: white;
+        color: black;
       }
     </style>
   </head>
@@ -95,7 +96,7 @@
       </div>
 
       <h3>Countries I've traveled to</h3>
-      <table id="Countries">
+      <table id="countries">
         <tr>
           <th>Name</th>
           <th>Year visited</th>

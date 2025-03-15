@@ -1,74 +1,135 @@
 <!DOCTYPE html>
 <html>
   <head>
-      <title>My lab 4 web page</title>
+      <title>My lab 5 web page</title>
     <style>
-      
+      body {width: 100%;}
+      #container {
+        width: 70%;
+        text-align: left;
+        margin: 0px auto;
+      }
+      #photo {
+        background-color: #f0f8ff;
+        margin-left: auto;
+        margin-right: 0;
+        float: right; 
+        width: 200px;
+        margin-left: 15px; 
+      }
+      #myphoto {
+        height: auto;
+        width: 150px;
+        border: 1px solid #ff6347;
+        border-radius: 50%;
+        padding: 5px;
+        display: block;
+        margin: 0 auto;
+      }
+      .caption {
+        font-size: 10px;
+        font-family: times;
+        text-align: center;
+        color: #ff6347;
+      }
+      p, td, li {
+        font-size: 12px;
+        font-family: times;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-family: times;
+        background-color: #ffcccb;
+      }
+      a {text-decoration: none;}
+      a:link {background-color: #ff6347;}
+      a:visited {background-color: #8a2be2;}
+      a:hover {background-color: #ff1493;}
+      #thingsImade {
+        background-color: #f0fff0;
+      }
+      #countries {
+        width: 100%;
+        font-family: typewriter;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      #countries th, #countries td {
+        border: 1px solid #f0e68c;
+        padding: 8px;
+      }
+      #countries th {
+        font-weight: bold;
+        font-family: typewriter;
+        background-color: #ffb6c1;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        color: black;
+      }
+
+      .clear {
+        clear: both;
+      }
     </style>
   </head>
   <body>
-    <div id = "container">
-    <h1>My lab 4 web page. Welcome!</h1>
-    <p>This is the 4th lab for Web Mapping, from MSU Denver.</p>
-    <h3>About me</h3>
-    <p>My name is Laura Patton, I'm a biology student at MSU Denver, I have 2 cats and I love painting and crocheting. Below are some things I've crocheted</p>
-    
-    <div id = "thingsImade">
-    <ul>
-      <li>Stuffed animals</li>
-      <li>BBL pillow</li>
-      <li>Flower hat</li>
-      <li>Red mushroom wizard hat</li>
-      <li>Book bag</li>
-    </ul>
-    </div>
+    <div id="container">
+      <h1>My lab 5 web page. Welcome!</h1>
+      <p>This is the 5th lab for Web Mapping, from MSU Denver.</p>
+      <h3>About me</h3>
+      <p>My name is Laura Patton, I'm a biology student at MSU Denver, I have 2 cats and I love painting and crocheting. Below are some things I've crocheted</p>
+
+      <div id="thingsImade">
+        <ul>
+          <li>Stuffed animals</li>
+          <li>BBL pillow</li>
+          <li>Flower hat</li>
+          <li>Red mushroom wizard hat</li>
+          <li>Book bag</li>
+        </ul>
+      </div>
+      <div id="photo">
+        <img id="myphoto" src="Iceland.jpg" class="iceland-photo"/>
+        <p class="caption"> Snorkeling with friends in Iceland. </p>
+        <p class="caption"> We booked through <a href="https://www.dive.is"> Dive.IS</a> </p>
+        <p class="caption"> Photo by author</p>
+      </div>
+
+      <div class="clear"></div>
 
       <h3>Countries I've traveled to</h3>
-      <table id = "Countries">
+      <table id="countries">
         <tr>
           <th>Name</th>
           <th>Year visited</th>
           <th>Solo or with friends</th>
           <th>An activity</th>
         </tr>
-      
         <tr>
           <td>Iceland</td>
           <td>2019</td>
           <td>With friends</td>
           <td>Snorkled in the Silfra Fissure</td>
         </tr>
-      
-         <tr>
+        <tr>
           <td>Peru</td>
           <td>2022</td>
           <td>With friends</td>
           <td>Stayed in the Amazon Rainforest</td>
         </tr>
-      
-         <tr>
+        <tr>
           <td>Mexico</td>
           <td>2024</td>
           <td>Solo</td>
           <td>Went salsa dancing with locals</td>
         </tr>
-      
-         <tr>
+        <tr>
           <td>Guatemala</td>
           <td>2025</td>
           <td>Solo</td>
           <td>Hiked an active volcano</td>
         </tr>
       </table>
-
-      <div id = "photo">
-<img src = "IMG_5459.JPG"/>
-<p class = "caption"> A photo of me on a hike in the Amazon jungle, weilding a machete. </p>
-        <p class = "caption"> Photo by Jordan Lyden </p>
-      </div>
-<img src = "Iceland.jpg"/>
-
-Snorkeling with friends in Iceland. We booked through <a href="https://www.dive.is"> Dive.IS</a>
     </div>
   </body>
 </html>

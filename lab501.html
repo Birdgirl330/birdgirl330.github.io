@@ -13,9 +13,9 @@
         background-color: #a9e0ff;
         margin-left: auto;
         margin-right: 0;
-        float: right; /* Keeps the image on the right side */
+        float: left; /* Align photo to the left */
         width: 200px;
-        margin-left: 15px; /* Adds some space between text and image */
+        margin-right: 15px; /* Space between photo and text */
       }
       #myphoto {
         height: auto;
@@ -50,6 +50,7 @@
         width: 100%;
         font-family: typewriter;
         border-collapse: collapse;
+        margin-top: 20px; /* Space between photo and table */
       }
       #countries th, #countries td {
         border: 1px solid #ffd8f0;
@@ -64,6 +65,11 @@
         text-align: left;
         color: black;
       }
+
+      /* Clear the float for content below */
+      .clear {
+        clear: both;
+      }
     </style>
   </head>
   <body>
@@ -73,12 +79,15 @@
       <h3>About me</h3>
       <p>My name is Laura Patton, I'm a biology student at MSU Denver, I have 2 cats and I love painting and crocheting. Below are some things I've crocheted</p>
 
+      <!-- Photo section, floating to the left -->
       <div id="photo">
         <img id="myphoto" src="Iceland.jpg" class="iceland-photo"/>
         <p class="caption"> Snorkeling with friends in Iceland. </p>
         <p class="caption"> We booked through <a href="https://www.dive.is"> Dive.IS</a> </p>
         <p class="caption"> Photo by author</p>
       </div>
+
+      <div class="clear"></div> <!-- Clears the float so content below doesn't wrap -->
 
       <h3>Countries I've traveled to</h3>
       <table id="countries">

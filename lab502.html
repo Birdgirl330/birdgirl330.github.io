@@ -3,14 +3,18 @@
   <head>
       <title>My lab 5 web page</title>
     <style>
-      body {width: 100%;}
+      body {
+        width: 100%;
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f9;
+      }
       #container {
         width: 70%;
         text-align: left;
         margin: 0px auto;
       }
       #photo {
-        background-color: #c0e8d5; /* Light green */
+        background-color: #c8e6c9;
         margin-left: auto;
         margin-right: 0;
         float: right; 
@@ -20,54 +24,53 @@
       #myphoto {
         height: auto;
         width: 150px;
-        border: 1px solid #7db76f; /* Medium green */
+        border: 2px solid #4caf50;
         border-radius: 50%;
         padding: 5px;
         display: block;
         margin: 0 auto;
       }
       .caption {
-        font-size: 10px;
-        font-family: times;
+        font-size: 12px;
+        font-family: 'Verdana', sans-serif;
+        color: #388e3c;
         text-align: center;
-        color: #4b9a4e; /* Dark green */
       }
       p, td, li {
-        font-size: 12px;
-        font-family: times;
+        font-size: 14px;
+        font-family: 'Verdana', sans-serif;
+        color: #2c6d31;
       }
       h1, h2, h3, h4, h5, h6 {
-        font-family: times;
-        background-color: #eaf7e0; /* Very light green */
+        font-family: 'Georgia', serif;
+        background-color: #a5d6a7;
+        color: #388e3c;
+        padding: 10px;
       }
       a {text-decoration: none;}
-      a:link {background-color: #7db76f;} /* Medium green */
-      a:visited {background-color: #4b9a4e;} /* Dark green */ 
-      a:hover {background-color: #4fbe56;} /* Bright green */
+      a:link {background-color: #81c784;}
+      a:visited {background-color: #66bb6a;}
+      a:hover {background-color: #4caf50;}
       #thingsImade {
-        background-color: #e1f7d5; /* Light green */
+        background-color: #c8e6c9;
       }
       #countries {
         width: 100%;
-        font-family: typewriter;
+        font-family: 'Courier New', Courier, monospace;
         border-collapse: collapse;
         margin-top: 20px;
       }
       #countries th, #countries td {
-        border: 1px solid #a9d09e; /* Light green border */
-        padding: 8px;
+        border: 1px solid #388e3c;
+        padding: 10px;
       }
       #countries th {
         font-weight: bold;
-        font-family: typewriter;
-        background-color: #98d09b; /* Light olive green */
-        padding-top: 12px;
-        padding-bottom: 12px;
-        text-align: left;
-        color: black;
+        font-family: 'Georgia', serif;
+        background-color: #a5d6a7;
+        color: #ffffff;
       }
 
-      /* Clear the float for content below */
       .clear {
         clear: both;
       }
@@ -80,7 +83,6 @@
       <h3>About me</h3>
       <p>My name is Laura Patton, I'm a biology student at MSU Denver, I have 2 cats and I love painting and crocheting. Below are some things I've crocheted</p>
 
-      <!-- List of things Laura has crocheted -->
       <div id="thingsImade">
         <ul>
           <li>Stuffed animals</li>

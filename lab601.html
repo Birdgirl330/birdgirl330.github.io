@@ -100,17 +100,9 @@
         });
 
         // toggle the photo on and off
-        $("#togglephoto").click(function() {
-          $("#myphoto").fadeToggle(); // Toggle the photo visibility
-
-          // Change the button text based on photo visibility
-          if ($("#myphoto").is(":visible")) {
-            $(this).text("Hide photo"); // When visible, text is "Hide photo"
-          } 
-          if ($("#myphoto").is(:hidden")) {
-            $(this).text("Show photo"); // When hidden, text is "Show photo"
-          }
-        });
+        $("#togglethephoto").click(function() {
+          $(#myphoto").fadeToggle();
+        }));
       });
     </script>
     
@@ -136,7 +128,7 @@
         <p class="caption"> Snorkeling with friends in Iceland. </p>
         <p class="caption"> We booked through <a href="https://www.dive.is"> Dive.IS</a> </p>
         <p class="caption"> Photo by author</p>
-        <button id="togglephoto">Hide photo</button> <!-- Button starts with "Hide photo" -->
+        <button id="togglephoto">Show/Hide photo.</button>
       </div>
 
       <h3>Countries I've traveled to</h3>

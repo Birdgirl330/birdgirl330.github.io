@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-      <title>My lab 5 web page</title>
+      <title>My lab 6 web page</title>
     <style>
       body {
         width: 100%;
@@ -70,16 +70,20 @@
         background-color: #a5d6a7;
         color: #ffffff;
       }
-
-      .clear {
-        clear: both;
-      }
     </style>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        
+      });
+    </script>
+    
   </head>
   <body>
     <div id="container">
-      <h1>My lab 5 web page. Welcome!</h1>
-      <p>This is the 5th lab for Web Mapping, from MSU Denver.</p>
+      <h1>My lab 6 web page. Welcome!</h1>
+      <p>This is the 6th lab for Web Mapping, from MSU Denver.</p>
       <h3>About me</h3>
       <p>My name is Laura Patton, I'm a biology student at MSU Denver, I have 2 cats and I love painting and crocheting. Below are some things I've crocheted</p>
 
@@ -99,8 +103,6 @@
         <p class="caption"> Photo by author</p>
       </div>
 
-      <div class="clear"></div>
-
       <h3>Countries I've traveled to</h3>
       <table id="countries">
         <tr>
@@ -110,25 +112,25 @@
           <th>An activity</th>
         </tr>
         <tr>
-          <td>Iceland</td>
+          <td><button id="clicktoreveal1">Iceland</button></td>
           <td>2019</td>
           <td>With friends</td>
           <td>Snorkled in the Silfra Fissure</td>
         </tr>
         <tr>
-          <td>Peru</td>
+          <td><button id="clicktoreveal2">Peru</button></td>
           <td>2022</td>
           <td>With friends</td>
           <td>Stayed in the Amazon Rainforest</td>
         </tr>
         <tr>
-          <td>Mexico</td>
+          <td><button id="clicktoreveal3">Mexico</button></td>
           <td>2024</td>
           <td>Solo</td>
           <td>Went salsa dancing with locals</td>
         </tr>
         <tr>
-          <td>Guatemala</td>
+          <td><button id="clicktoreveal4">Guatemala</button></td>
           <td>2025</td>
           <td>Solo</td>
           <td>Hiked an active volcano</td>

@@ -75,6 +75,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
       $(document).ready(function(){
+        $("#appear").click( function() {
+// if someone clicks on appear, this runs!
+console.log("someone clicked on button appear.");
+$("#hidden_text").text("Unless someone like you cares a whole awful lot, nothing is going to get better. It's not.");
+});
         console.log("started JavaScript");
         // do this when click on the clicktoreveal1 button
         $("#clicktoreveal1").click(function() {

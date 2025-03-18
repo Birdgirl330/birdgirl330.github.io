@@ -98,6 +98,11 @@
           // run this when I click on this button
           $("#div_ctr4").html("Guatemala");
         });
+
+        // toggle the photo on and off
+        $("#togglethephoto").click(function() {
+          $(#myphoto").fadeToggle();
+        }));
       });
     </script>
     
@@ -123,6 +128,7 @@
         <p class="caption"> Snorkeling with friends in Iceland. </p>
         <p class="caption"> We booked through <a href="https://www.dive.is"> Dive.IS</a> </p>
         <p class="caption"> Photo by author</p>
+        <button id="togglephoto">Toggle the photo on/off.</button>
       </div>
 
       <h3>Countries I've traveled to</h3>

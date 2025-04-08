@@ -22,7 +22,7 @@
       }).addTo(map);
 
       var marker = L.marker([30.440938978916602, -86.6026773349784]).addTo(map);
-      marker.bindPopup("<b>Hello world!</b><br>I am Laura's old house.").openPopup();
+      marker.bindPopup("<b>Hello!</b><br>I am Laura's old house.").openPopup();
 
       var circle = L.circle([30.393037, -86.584400], {
         color: 'red',
@@ -40,8 +40,8 @@
       polygon.bindPopup("I am Eglin AFB. Where Laura used to be stationed");
 
       var popup = L.popup()
-        .setLatLng([51.513, -0.09])
-        .setContent("I am a popup.")
+        .setLatLng([30.462200, -86.553598])
+        .setContent("I am a popup at Fort Walton Beach, Florida.")
         .openOn(map);
 
       function onMapClick(e) {

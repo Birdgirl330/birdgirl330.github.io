@@ -14,37 +14,36 @@
     <div id="map"></div>
 
     <script>
-      var map = L.map('map').setView([51.505, -0.09], 13);
+      var map = L.map('map').setView([30.462200, -86.553598], 13);
 
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       }).addTo(map);
 
-      var marker = L.marker([51.5, -0.09]).addTo(map);
-      marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+      var marker = L.marker([30.440938978916602, -86.6026773349784]).addTo(map);
+      marker.bindPopup("<b>Hello world!</b><br>I am Laura's old house.").openPopup();
 
-      var circle = L.circle([51.508, -0.11], {
+      var circle = L.circle([30.393037, -86.584400], {
         color: 'red',
         fillColor: '#f03',
         fillOpacity: 0.5,
         radius: 500
       }).addTo(map);
-      circle.bindPopup("I am a circle.");
+      circle.bindPopup("I am Laura's favorite beach.");
 
       var polygon = L.polygon([
-        [51.509, -0.08],
-        [51.503, -0.06],
-        [51.51, -0.047]
+        [30.450105, -86.570490],
+        [30.501429, -86.493988],
+        [30.456942, -86.490331]
       ]).addTo(map);
-      polygon.bindPopup("I am a polygon.");
+      polygon.bindPopup("I am Eglin AFB. Where Laura used to be stationed");
 
       var popup = L.popup()
         .setLatLng([51.513, -0.09])
-        .setContent("I am a standalone popup.")
+        .setContent("I am a popup.")
         .openOn(map);
 
-      // Handle map click
       function onMapClick(e) {
         alert("You clicked the map at " + e.latlng);
       }

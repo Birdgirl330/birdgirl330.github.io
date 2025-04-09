@@ -11,6 +11,8 @@
     </style>
   </head>
   <body>
+    <h1>Here's a map of Fort Walton Beach, Florida.</h1>
+    <p>Marked is the base I was stationed, where I used to live, and a beach I frequented.</p>
     <div id="map"></div>
 
     <script>
@@ -22,7 +24,7 @@
       }).addTo(map);
 
       var marker = L.marker([30.440938978916602, -86.6026773349784]).addTo(map);
-      marker.bindPopup("<b>Hello!</b><br>I am Laura's old house.").openPopup();
+      marker.bindPopup("<b>Hello!</b>I am Laura's old house.").openPopup();
 
       var circle = L.circle([30.393037, -86.584400], {
         color: 'red',

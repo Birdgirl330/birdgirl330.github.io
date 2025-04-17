@@ -61,7 +61,7 @@
         "OpenTopoMap": OpenTopoMap
       };
       var layerControl = L.control.layers(baseMaps, null).addTo(map);
-      // Add the Denver ACS data (with corrected filename)
+      // Add the Denver ACS data
       $.getJSON('./acs_denver_2021.geojson', function(data) {
         var acsDenver2021Layer = L.geoJSON(data).addTo(map);
         // Pan to the center of the data

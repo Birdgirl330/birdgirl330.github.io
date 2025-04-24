@@ -72,20 +72,18 @@
         return {
           fillColor : answer,
           weight : 1,
-          opacity : 10,
+          opacity : 0.8,
           color : 'white',
           dashArray : '3',
-          fillOpacity : 0.7
+          fillOpacity : 0.9  // Increased opacity to make the colors stronger
         };
-        return styleReturn;
       }
       
       $.getJSON('./acs_denver_2021.geojson', function(data) {
-        var acsDenver2021Layer = L.geoJSON(data, 
-                                           {style:style1,
-                                           onEachFeature: function(feature, layer) {
-                                             layer.bindPopup(Percent Hispanic: " + feature.properties.PCT_HISPANIC + "%");
-                                           }}).addTo(map);
+        var acsDenver2021Layer = L.geoJSON(data, {style: style1,
+          onEachFeature: function(feature, layer) {
+            layer.bindPopup("Percent Hispanic: " + feature.properties.PCT_HISPANIC + "%");
+          }}).addTo(map);
         
         map.panTo(acsDenver2021Layer.getBounds().getCenter());
         layerControl.addOverlay(acsDenver2021Layer, "Census 2021");

@@ -61,9 +61,34 @@
         "OpenTopoMap": OpenTopoMap
       };
       var layerControl = L.control.layers(baseMaps, null).addTo(map);
+
+      // define a function to style my chloroplath map
+      function style1 (feature) {
+        d = feature.properties.PCT_HISPANIC;
+        answer = d > 30 ? '#C8CEEE':
+          d > 20 ? '#E8DAF0':
+          d > 15 ? 'F3E4F5':
+          d > 10 ? 'FCDCE1':
+          d > 5 ? 'F2CAEA':
+          d > 3 ? 'D8BEE5':
+          d > 1 ? 'A7ABDE0':
+          '#DEC9F0':
+        styleReturn = {
+          fillColor : answer,
+          weight : 1,
+          opacity : 1,
+          color : 'white',
+          dashArray : '3',
+          fillOpacity : 0.7
+        };
+        return styleReturn;
+      }
+      
       // Add the Denver ACS data
       $.getJSON('./acs_denver_2021.geojson', function(data) {
-        var acsDenver2021Layer = L.geoJSON(data).addTo(map);
+        var acsDenver2021Layer = L.geoJSON(data,
+                                           {style:style1}).addTo(map);
+        
         // Pan to the center of the data
         map.panTo(acsDenver2021Layer.getBounds().getCenter());
         // Add the layer to the control

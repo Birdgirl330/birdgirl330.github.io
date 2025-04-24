@@ -77,10 +77,16 @@
           dashArray : '3',
           fillOpacity : 0.7
         };
+        return styleReturn;
       }
       
       $.getJSON('./acs_denver_2021.geojson', function(data) {
-        var acsDenver2021Layer = L.geoJSON(data, {style: style1}).addTo(map);
+        var acsDenver2021Layer = L.geoJSON(data, 
+                                           {style:style1,
+                                           onEachFeature: function(feature, layer) {
+                                             layer.bindPopup(Percent Hispanic: " + feature.properties.PCT_HISPANIC + "%");
+                                           }}).addTo(map);
+        
         map.panTo(acsDenver2021Layer.getBounds().getCenter());
         layerControl.addOverlay(acsDenver2021Layer, "Census 2021");
       });

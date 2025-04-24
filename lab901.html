@@ -39,9 +39,7 @@
   </style>
   <script>
     $(document).ready(function() {
-      // Create the base map
       var map = L.map('map').setView([0, 0], 10); 
-      // Base layers
       var OSMTiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -54,7 +52,6 @@
         maxZoom: 19,
         attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
       });
-      // Base layer control
       var baseMaps = {
         "OpenStreetMap": OSMTiles,
         "Humanitarian OSM": HOTOSMTiles,
@@ -62,18 +59,17 @@
       };
       var layerControl = L.control.layers(baseMaps, null).addTo(map);
 
-      // define a function to style my chloroplath map
-      function style1 (feature) {
-        d = feature.properties.PCT_HISPANIC;
-        answer = d > 30 ? '#C8CEEE':
-          d > 20 ? '#E8DAF0':
-          d > 15 ? 'F3E4F5':
-          d > 10 ? 'FCDCE1':
-          d > 5 ? 'F2CAEA':
-          d > 3 ? 'D8BEE5':
-          d > 1 ? 'A7ABDE0':
-          '#DEC9F0':
-        styleReturn = {
+      function style1(feature) {
+        let d = feature.properties.PCT_HISPANIC;
+        let answer = d > 30 ? '#C8CEEE' :
+                     d > 20 ? '#E8DAF0' :
+                     d > 15 ? '#F3E4F5' :
+                     d > 10 ? '#FCDCE1' :
+                     d > 5  ? '#F2CAEA' :
+                     d > 3  ? '#D8BEE5' :
+                     d > 1  ? '#A7ABDE' :
+                              '#DEC9F0';
+        return {
           fillColor : answer,
           weight : 1,
           opacity : 1,
@@ -81,21 +77,15 @@
           dashArray : '3',
           fillOpacity : 0.7
         };
-        return styleReturn;
       }
       
-      // Add the Denver ACS data
       $.getJSON('./acs_denver_2021.geojson', function(data) {
-        var acsDenver2021Layer = L.geoJSON(data,
-                                           {style:style1}).addTo(map);
-        
-        // Pan to the center of the data
+        var acsDenver2021Layer = L.geoJSON(data, {style: style1}).addTo(map);
         map.panTo(acsDenver2021Layer.getBounds().getCenter());
-        // Add the layer to the control
         layerControl.addOverlay(acsDenver2021Layer, "Census 2021");
       });
-      // Add remote DRCOG data
-      $.getJSON('https://services1.arcgis.com/zdB7qR0BtYrg0Xpl/arcgis/rest/services/ODC_TRANS_RTDPARKNRIDE_P/FeatureServer/280/query?outFields=*&where=1%3D1&f=geojson', function (data) {
+
+      $.getJSON('https://services1.arcgis.com/zdB7qR0BtYrg0Xpl/arcgis/rest/services/ODC_TRANS_RTDPARKNRIDE_P/FeatureServer/280/query?outFields=*&where=1%3D1&f=geojson', function(data) {
         var newLayer = L.geoJSON(data);
         layerControl.addOverlay(newLayer, "RTD Park-N-Ride");
       });
@@ -108,4 +98,5 @@
     <p>Data from <a href="https://opendata-geospatialdenver.hub.arcgis.com/maps/619c7f836b6e4188b0e0f0458aecba26">Denver Open Data Catalog</a></p>
   </div>
   <div id="map"></div>
-</body></html>
+</body>
+</html>

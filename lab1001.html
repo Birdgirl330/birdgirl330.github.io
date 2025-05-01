@@ -1,0 +1,136 @@
+<html lang="en">
+<head>
+  <base target="_top">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lab 8 - Denver Neighborhood Data</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    #map {
+      width: 100%;
+      height: 80%;
+    }
+    h1 {
+      color: #3293a8;
+      font-family: "Garamond", serif;
+      font-size: 25px;
+    }
+    p {
+      font: serif 10px;
+      color: #3293a8;
+    }
+    #header {
+      width: 100%;
+      margin: auto;
+      text-align: left;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .legend {
+      line-height: 18px;
+      color: #8E3563;
+      background-color: #CF91B5;
+      padding: 2px;
+    }
+    .legend i {
+      width: 18px;
+      height: 18px;
+      float: right;
+      margin-left: 8px;
+      opacity: 0.8;
+    }
+  </style>
+  <script>
+    $(document).ready(function() {
+      var map = L.map('map').setView([0, 0], 10); 
+      var OSMTiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      }).addTo(map);
+      var HOTOSMTiles = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'
+      });
+      var OpenTopoMap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+      });
+      var baseMaps = {
+        "OpenStreetMap": OSMTiles,
+        "Humanitarian OSM": HOTOSMTiles,
+        "OpenTopoMap": OpenTopoMap
+      };
+      var layerControl = L.control.layers(baseMaps, null).addTo(map);
+
+      function style1(feature) {
+        let d = feature.properties.PCT_HISPANIC;
+        let answer = d > 30 ? '#C8CEEE' :
+                     d > 20 ? '#E8DAF0' :
+                     d > 15 ? '#F3E4F5' :
+                     d > 10 ? '#FCDCE1' :
+                     d > 5  ? '#F2CAEA' :
+                     d > 3  ? '#D8BEE5' :
+                     d > 1  ? '#A7ABDE' :
+                     '#DEC9F0';
+        return {
+          fillColor : answer,
+          weight : 1,
+          opacity : 0.8,
+          color : 'white',
+          dashArray : '3',
+          fillOpacity : 0.9  // Increased opacity to make the colors stronger
+        };
+      }
+      
+      $.getJSON('./acs_denver_2021.geojson', function(data) {
+        var acsDenver2021Layer = L.geoJSON(data, {style: style1,
+          onEachFeature: function(feature, layer) {
+            layer.bindPopup("Percent Hispanic: " + feature.properties.PCT_HISPANIC + "%");
+          }}).addTo(map);
+        
+        map.panTo(acsDenver2021Layer.getBounds().getCenter());
+        layerControl.addOverlay(acsDenver2021Layer, "Census 2021");
+      });
+
+      $.getJSON('https://services1.arcgis.com/zdB7qR0BtYrg0Xpl/arcgis/rest/services/ODC_TRANS_RTDPARKNRIDE_P/FeatureServer/280/query?outFields=*&where=1%3D1&f=geojson', function(data) {
+        var newLayer = L.geoJSON(data);
+        layerControl.addOverlay(newLayer, "RTD Park-N-Ride");
+      });
+      
+    var legend = L.control((position: 'bottomright'));
+    legend.onAdd = function(map) {
+      var div = L.DomUtil.create('div', 'info legend');
+      colors = ['#C8CEEE','#E8DAF0','#F3E4F5','#FCDCE1','#F2CAEA','#D8BEE5','#A7ABDE','#DEC9F0'];
+      labels = ['0-1%','1-3%','3-5%','5-10%','10-15%','15-20%','20-30%','30%+'];
+      div.innerHTML = '<h3>% Hispanic</h3>';
+
+      for (var i = 0; i < colors.length; i++) {
+        div.innerHTML += '<i style="background:' +color[i] + '"></i> ' + labels[i] + '<br>';l
+      }
+      return div;
+    };
+      legend.addTo(map);
+      
+    });
+  </script>
+</head>
+<body>
+  <div id="header">
+    <h1><a href="https://www.census.gov/programs-surveys/acs">Denver 2021 American Community Survey (Census) data</a></h1>
+    <p>Data from <a href="https://opendata-geospatialdenver.hub.arcgis.com/maps/619c7f836b6e4188b0e0f0458aecba26">Denver Open Data Catalog</a></p>
+    <p>Data shows the percentage of the Hispanic population in each neighborhood.</p>
+  </div>
+  <div id="map"></div>
+</body>
+</html>
